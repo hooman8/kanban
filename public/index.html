@@ -10,15 +10,30 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
     <style>
+      .card {
+        margin-bottom: 20px;
+      }
       /* This CSS will make the sidebar 10% of the view width */
       .sidebar {
-        flex: 0 0 10%;
-        max-width: 10%;
+        flex: 0 0 20%;
+        max-width: 20%;
       }
       /* This CSS will make the main content area take up the remaining space */
       .main-content {
-        flex: 0 0 90%;
-        max-width: 90%;
+        flex: 0 0 80%;
+        max-width: 80%;
+      }
+      .collapsible {
+        padding: 0 !important; /* Add this line */
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.25s ease-out;
+      }
+
+      .collapsible.open {
+        max-height: 500px; /* You may need to adjust this value depending on your content */
+        transition: max-height 0.25s ease-in;
+        padding: 1.25rem !important; /* Add this line */
       }
     </style>
   </head>
@@ -38,8 +53,8 @@
           <aside class="menu">
             <p class="menu-label">Navigation</p>
             <ul class="menu-list">
-              <li><a href="#">Menu 1</a></li>
-              <li><a href="#">Menu 2</a></li>
+              <li><a href="#">New Item</a></li>
+              <li><a href="#">Factory</a></li>
             </ul>
           </aside>
         </div>
@@ -54,18 +69,77 @@
               </span>
             </div>
           </div>
-
           <!-- Filter bar -->
-          <div class="buttons are-medium">
-            <button class="button is-primary">Filter 1</button>
-            <button class="button is-link">Filter 2</button>
-            <button class="button is-info">Filter 3</button>
-            <button class="button is-success">Filter 4</button>
-            <button class="button is-warning">Filter 5</button>
-          </div>
-
-          <div class="columns is-multiline is-mobile">
-            <!-- Add your columns here as before -->
+          <div class="columns">
+            <div class="column">
+              <div class="dropdown is-hoverable">
+                <div class="dropdown-trigger">
+                  <button
+                    class="button"
+                    aria-haspopup="true"
+                    aria-controls="dropdown-menu1"
+                  >
+                    <span>Filters</span>
+                    <span class="icon is-small">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu1" role="menu">
+                  <div class="dropdown-content">
+                    <a href="#" class="dropdown-item"> Filter 1 </a>
+                    <a href="#" class="dropdown-item"> Filter 2 </a>
+                    <!-- Add more filters here -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="dropdown is-hoverable">
+                <div class="dropdown-trigger">
+                  <button
+                    class="button"
+                    aria-haspopup="true"
+                    aria-controls="dropdown-menu2"
+                  >
+                    <span>Options</span>
+                    <span class="icon is-small">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+                  <div class="dropdown-content">
+                    <a href="#" class="dropdown-item"> Option 1 </a>
+                    <a href="#" class="dropdown-item"> Option 2 </a>
+                    <!-- Add more options here -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="dropdown is-hoverable">
+                <div class="dropdown-trigger">
+                  <button
+                    class="button"
+                    aria-haspopup="true"
+                    aria-controls="dropdown-menu3"
+                  >
+                    <span>Settings</span>
+                    <span class="icon is-small">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                  <div class="dropdown-content">
+                    <a href="#" class="dropdown-item"> Setting 1 </a>
+                    <a href="#" class="dropdown-item"> Setting 2 </a>
+                    <!-- Add more settings here -->
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -108,17 +182,39 @@
                 </div>
               </div>
               <footer class="card-footer">
-                <a href="#" class="card-footer-item">Save</a>
                 <a href="#" class="card-footer-item">Edit</a>
                 <a href="#" class="card-footer-item">Delete</a>
               </footer>
             </div>
 
             <div class="card">
-              <div class="card-content">
-                <p class="title">Card 2</p>
-                <p class="content">Card content</p>
+              <header class="card-header">
+                <p class="card-header-title">Card header</p>
+                <button
+                  class="card-header-icon"
+                  aria-label="more options"
+                  id="cardToggle"
+                >
+                  <span class="icon">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </header>
+              <div class="card-content collapsible" id="cardContent">
+                <!-- Card content here -->
+
+                <div class="content">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                  <a href="#">#css</a> <a href="#">#responsive</a>
+                  <br />
+                  <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                </div>
               </div>
+              <footer class="card-footer">
+                <a href="#" class="card-footer-item">Edit</a>
+                <a href="#" class="card-footer-item">Delete</a>
+              </footer>
             </div>
 
             <div class="card">
@@ -155,5 +251,6 @@
         </div>
       </div>
     </div>
+    <script src="./js/app.js"></script>
   </body>
 </html>
