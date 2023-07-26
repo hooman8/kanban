@@ -130,4 +130,5 @@ dist
 .pnp.*
 
 # data directory
-/public/data/*.json
+/public/data/*
+public/.DS_Store

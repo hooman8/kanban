@@ -26,17 +26,15 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 fetch("http://localhost:3000/download")
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    return response.arrayBuffer();
-  })
-  .then((buffer) => {
-    const data = new TextDecoder("utf-8").decode(new Uint8Array(buffer));
-    const jsonData = JSON.parse(data);
-    console.log(jsonData);
-  })
-  .catch((e) => {
-    console.log(`There was a problem with your fetch operation: ${e.message}`);
-  });
+  .then((response) => response.json())
+  .then((data) => console.log(data))
+  .catch((e) =>
+    console.log(`There was a problem with your fetch operation: ${e.message}`)
+  );
+
+// fetch("http://localhost:3000/download-uncompressed")
+//   .then((response) => response.json())
+//   .then((data) => console.log(data))
+//   .catch((e) =>
+//     console.log(`There was a problem with your fetch operation: ${e.message}`)
+//   );
