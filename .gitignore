@@ -130,4 +130,4 @@ dist
 .pnp.*
 
 # data directory
-./public/data/**/*.json
+/public/data/*.json
